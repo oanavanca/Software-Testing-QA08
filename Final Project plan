@@ -1,0 +1,40 @@
+Final Project plan
+
+- Black-Box testing - cum se aplica pe proiectul vostru - hint: nu avem access la codul sursa!
+- Functional 
+	- UI - if possible cross browser (Chrome, Edge, Firefox, Opera) 
+	- API
+- Non-functional testing
+	- Performance - Postman
+	- Load testing - multi useri - citim Dev tool
+	
+- Documnete - Test Report (ce template vreti) - exportat in PDF:
+	- Test Case-uri pentru test automate TestLink sau Excel 
+	- Test Case-uri pentru teste manual - daca e nevoie
+	- Bugs Mantis sau Excel 
+	
+Raportul va contine daor ID-urile TC si BUG + Title/Summary - For tracability 
+MINDMAP - requirements  
++ ajutor pentru TC  - fiecare user story/use case sa fie detaliat - minim 3 functionalitati! din care 1 sa fie login
+Acoperirea tutror cazurilor positive si negative
+
++ Alte tipuri de teste daca este necesar - Smoke Tests (normal behavior for the application), Regression Test - ce sunt, de ce le folosim - testele automate sunt regression test - se pot rula peste noapte 
+
+- CI (Continuous integration) - rulare peste noapte prin batch file using Task Scheduler - Cypress + Postman - maybe report versioning
+
+OS: Windows 10 ...., 
+	
+API Tests
+Environment: Postman
+- TC 1.1 Login
+- TC 1.2 Access ...
+
+UI Tests 
+Environment: Cypress Browser: Chrome, Edge, Firefox
+- Test Suit: Login
+	- TC 1.1 Login ok
+	- TC 1.2 Login not ok
+	
+Performance tests
+Environment: POSTMAN / Dev Tools - Chrome 80.4.6
+- TC 1.1 ....
