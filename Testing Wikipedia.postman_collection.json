@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "0fb6bf5c-eece-4f24-bff4-e63034c56b07",
+		"name": "Testing Wikipedia",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3448532a-71e6-42e9-8a7f-83b0f69589b6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "wpName",
+							"value": "Oana.Vanca",
+							"type": "text"
+						},
+						{
+							"key": "wpPassword",
+							"value": "19910415Oana",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://en.wikipedia.org/w/index.php?title=Special:UserLogin&returnto=Main+Page",
+					"protocol": "https",
+					"host": [
+						"en",
+						"wikipedia",
+						"org"
+					],
+					"path": [
+						"w",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "Special:UserLogin"
+						},
+						{
+							"key": "returnto",
+							"value": "Main+Page"
+						}
+					]
+				},
+				"description": "Status 200"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2cfe332c-cf3a-4ad1-baaf-e06651f2869e",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  //  pm.response.to.have.status(200);\r",
+							"   pm.response.status.to.be.oneOf([400,401,402]);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('Welcome to <a href=\"/wiki/Wikipedia\" title=\"Wikipedia\">Wikipedia</a>');\r",
+							"});\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-request-id",
+						"value": "e8da550f-928a-41c3-87b5-ad92dab6f063",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "https://graph.facebook.com/3724985710879409?fields=birthday,hometown&access_token=EAAONPaT5gBEBAP0N4oW9HkisEMsYRXEOeZBBNS3aP1mMkhXLZAteYe32tpiZAXOWCafahqaWD4vsdzsFY3T0LpDLEAn8wgFXm7dGMgDuO9cyPFhQPjsZCMjwQXViIfv9lNvq8cIZC9tXDKUFm1TPMPkelb9oezrfMg138zC3OBsEwBxq6zlcmcgZBnT598X8ZB19sO3AZBOjTL2mWGnNxGCwY9o0rRTkGcCmFr116eqAzgZDZD",
+					"protocol": "https",
+					"host": [
+						"graph",
+						"facebook",
+						"com"
+					],
+					"path": [
+						"3724985710879409"
+					],
+					"query": [
+						{
+							"key": "fields",
+							"value": "birthday,hometown"
+						},
+						{
+							"key": "access_token",
+							"value": "EAAONPaT5gBEBAP0N4oW9HkisEMsYRXEOeZBBNS3aP1mMkhXLZAteYe32tpiZAXOWCafahqaWD4vsdzsFY3T0LpDLEAn8wgFXm7dGMgDuO9cyPFhQPjsZCMjwQXViIfv9lNvq8cIZC9tXDKUFm1TPMPkelb9oezrfMg138zC3OBsEwBxq6zlcmcgZBnT598X8ZB19sO3AZBOjTL2mWGnNxGCwY9o0rRTkGcCmFr116eqAzgZDZD"
+						}
+					]
+				},
+				"description": "Status 200\r\nLogin successful = user name visible on main page\r\nPage load successful = key elements are visible\r\nResponse time 200-500 ms"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
