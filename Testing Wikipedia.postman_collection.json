@@ -16,7 +16,9 @@
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							""
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -36,6 +38,36 @@
 						{
 							"key": "wpPassword",
 							"value": "19910415Oana",
+							"type": "text"
+						},
+						{
+							"key": "wploginattempt",
+							"value": "Log in",
+							"type": "text"
+						},
+						{
+							"key": "wpEditToken",
+							"value": "+\\",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "Special:UserLogin",
+							"type": "text"
+						},
+						{
+							"key": "authAction",
+							"value": "login",
+							"type": "text"
+						},
+						{
+							"key": "force",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "wpLoginToken",
+							"value": "a5e7133a6a6788d5cc5d16a82f510f6d5f232340+\\",
 							"type": "text"
 						}
 					]
@@ -68,67 +100,44 @@
 			"response": []
 		},
 		{
-			"name": "Login",
+			"name": "MainPage",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "2cfe332c-cf3a-4ad1-baaf-e06651f2869e",
+						"id": "3bff1576-0124-402c-bf2b-a0e6990021b6",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
-							"  //  pm.response.to.have.status(200);\r",
-							"   pm.response.status.to.be.oneOf([400,401,402]);\r",
+							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"pm.test(\"Body matches string\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include('Welcome to <a href=\"/wiki/Wikipedia\" title=\"Wikipedia\">Wikipedia</a>');\r",
+							"pm.test(\"Main Page with user logged in\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Oana\");\r",
 							"});\r",
-							"pm.test(\"Response time is less than 500ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"pm.test(\"Response time is less than 800ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(800);\r",
 							"});"
 						],
 						"type": "text/javascript"
 					}
 				}
 			],
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"method": "GET",
-				"header": [
-					{
-						"key": "x-request-id",
-						"value": "e8da550f-928a-41c3-87b5-ad92dab6f063",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": []
-				},
+				"header": [],
 				"url": {
-					"raw": "https://graph.facebook.com/3724985710879409?fields=birthday,hometown&access_token=EAAONPaT5gBEBAP0N4oW9HkisEMsYRXEOeZBBNS3aP1mMkhXLZAteYe32tpiZAXOWCafahqaWD4vsdzsFY3T0LpDLEAn8wgFXm7dGMgDuO9cyPFhQPjsZCMjwQXViIfv9lNvq8cIZC9tXDKUFm1TPMPkelb9oezrfMg138zC3OBsEwBxq6zlcmcgZBnT598X8ZB19sO3AZBOjTL2mWGnNxGCwY9o0rRTkGcCmFr116eqAzgZDZD",
+					"raw": "https://en.wikipedia.org/wiki/Main_Page",
 					"protocol": "https",
 					"host": [
-						"graph",
-						"facebook",
-						"com"
+						"en",
+						"wikipedia",
+						"org"
 					],
 					"path": [
-						"3724985710879409"
-					],
-					"query": [
-						{
-							"key": "fields",
-							"value": "birthday,hometown"
-						},
-						{
-							"key": "access_token",
-							"value": "EAAONPaT5gBEBAP0N4oW9HkisEMsYRXEOeZBBNS3aP1mMkhXLZAteYe32tpiZAXOWCafahqaWD4vsdzsFY3T0LpDLEAn8wgFXm7dGMgDuO9cyPFhQPjsZCMjwQXViIfv9lNvq8cIZC9tXDKUFm1TPMPkelb9oezrfMg138zC3OBsEwBxq6zlcmcgZBnT598X8ZB19sO3AZBOjTL2mWGnNxGCwY9o0rRTkGcCmFr116eqAzgZDZD"
-						}
+						"wiki",
+						"Main_Page"
 					]
 				},
-				"description": "Status 200\r\nLogin successful = user name visible on main page\r\nPage load successful = key elements are visible\r\nResponse time 200-500 ms"
+				"description": "Managed the login by using cookies.\r\nSet up all the cookies you have in the request (Dev tools). In this way you manage to keep the session for the user"
 			},
 			"response": []
 		}
