@@ -1,0 +1,16 @@
+{
+  "name": "testclassexample",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "cypress": "cypress open",
+    "test": "cypress run --spec cypress/integration/Test/**/* --browser chrome"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "cypress": "^4.11.0"
+  }
+}
